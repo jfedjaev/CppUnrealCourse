@@ -1,0 +1,4 @@
+﻿  main.cpp
+d:\onedrive\documents\visual studio 2015\projects\unrealcourse\section_02\bullcowgame\main.cpp(23): warning C4101: 'BCGame': unreferenced local variable
+  BullCowGame.vcxproj -> D:\OneDrive\Documents\Visual Studio 2015\Projects\UnrealCourse\Section_02\Debug\BullCowGame.exe
+  BullCowGame.vcxproj -> D:\OneDrive\Documents\Visual Studio 2015\Projects\UnrealCourse\Section_02\Debug\BullCowGame.pdb (Full PDB)
