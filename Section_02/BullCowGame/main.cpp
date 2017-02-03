@@ -5,30 +5,42 @@
 void PrintIntro();
 void PlayGame();
 void TellGuess(std::string Guess);
-std::string GetGuess();
+std::string GetGuess(int TryNb);
 bool AskToPlayAgain();
+
+FBullCowGame BCGame;	// instantiate a new game
 
 int main() {
 	bool bPlayAgain = false;
-	PrintIntro();
-
 	do {
+		PrintIntro();
 		PlayGame();
+		// TODO add a game summary
 		bPlayAgain = AskToPlayAgain();
 	} while (bPlayAgain == true);
 	return 0;
 }
 
 void PlayGame() {
-	FBullCowGame BCGame;	// instantiate a new game
-	constexpr int NUMBER_OF_TURNS = 5;
-	std::string Guess = "";
-	Guess = GetGuess();
-	TellGuess(Guess);
+	BCGame.Reset();
+	int MaxTries = BCGame.GetMaxTries();
+
+	// loop for the number of turns asking for guesses 
+	// TODO change from FOR to WHILE loop once we have 
+	for (int i = 0; i < MaxTries; i++) {
+		std::string Guess = "";		// TODO make loop checking valid guesses
+
+		// submit valid guess to the game
+		// print number of bulls and cows
+		Guess = GetGuess(BCGame.GetCurrentTry());
+		std::cout << "Your guess was: " << Guess << ", wasn't it?" << std::endl;
+		std::cout << std::endl;
+	}
+
+	// TODO summarize game
 }
 
 void TellGuess(std::string Guess) {
-	std::cout << "Your guess was: " << Guess << ", wasn't it?" << std::endl;
 	return;
 }
 
@@ -39,9 +51,9 @@ void PrintIntro() {
 	return;
 }
 
-std::string GetGuess() {
+std::string GetGuess(int TryNb) {
 	std::string Guess = "";
-	std::cout << "Please enter your guess: ";
+	std::cout << "Try No. " << TryNb <<". Please enter your guess: ";
 	std::getline(std::cin, Guess);
 	std::cout << std::endl;
 	return Guess;
